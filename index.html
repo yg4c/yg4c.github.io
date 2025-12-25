@@ -59,7 +59,7 @@ h2{text-align:center;font-size:38px;margin-bottom:40px;letter-spacing:3px}
 }
 .video-box{
     position:relative;
-    padding-top:177%;
+    padding-top:56.25%;
     border-radius:16px;
     overflow:hidden;
     border:1px solid #222;
@@ -174,9 +174,9 @@ footer{
 <nav>
     <a href="#testimonios">LA VERDAD</a>
     <a href="#sec2">CUENTAS</a>
-    <a href="#sec4">????</a>
+    <a href="#video">VIDEO</a>
+    <a href="#coming">COMING SOON</a>
     <a href="#sec6">????</a>
-    <a href="#sec8">????</a>
 </nav>
 
 <section id="testimonios">
@@ -206,22 +206,28 @@ footer{
 </div>
 </section>
 
-<section id="sec4" class="bloqueado">
-<div class="overlay">Disponible pronto</div>
-<h2>SE DESBLOQUEA EL 25/12 – 10:00 PM</h2>
-<div class="contador"><span id="contador4"></span></div>
+<!-- VIDEO DESBLOQUEADO -->
+<section id="video">
+<h2>VIDEO</h2>
+<div class="video-box" style="max-width:800px;margin:auto">
+    <video controls>
+        <source src="bolson.mp4" type="video/mp4">
+    </video>
+</div>
+</section>
+
+<!-- COMING SOON -->
+<section id="coming">
+<h2>COMING SOON</h2>
+<div class="hero-img">
+    <img src="https://i.imgur.com/quKoFE1.jpg" onclick="abrirLightbox(this.src)">
+</div>
 </section>
 
 <section id="sec6" class="bloqueado">
 <div class="overlay">Disponible pronto</div>
 <h2>SE DESBLOQUEA EL 27/12 – 10:00 PM</h2>
 <div class="contador"><span id="contador6"></span></div>
-</section>
-
-<section id="sec8" class="bloqueado">
-<div class="overlay">Disponible pronto</div>
-<h2>SE DESBLOQUEA EL 29/12 – 10:00 PM</h2>
-<div class="contador"><span id="contador8"></span></div>
 </section>
 
 <footer>© 2025 · discord para hacer reclamos: haidemberg</footer>
@@ -265,10 +271,7 @@ function contadorFecha(fecha,id,seccion){
     },1000);
 }
 
-/* FECHAS GMT-5 */
-contadorFecha("2025-12-25T22:00:00-05:00","contador4",sec4);
 contadorFecha("2025-12-27T22:00:00-05:00","contador6",sec6);
-contadorFecha("2025-12-29T22:00:00-05:00","contador8",sec8);
 </script>
 
 </body>

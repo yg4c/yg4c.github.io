@@ -2,276 +2,218 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Se adelantó Navidad</title>
+<title>Cuenta Regresiva</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{
+*{
+    box-sizing:border-box;
     margin:0;
-    font-family:'Segoe UI',Arial,sans-serif;
-    background:radial-gradient(circle at top,#050505,#000);
-    color:#fff;
+    padding:0;
 }
 
-/* NAVBAR */
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(10px);
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    padding:15px;
-    z-index:1000;
-    border-bottom:1px solid #1a1a1a;
-}
-nav a{color:#eaeaea;text-decoration:none;letter-spacing:1px}
-nav a:hover{color:#00bfff}
-
-/* SECCIONES */
-section{
+body{
     min-height:100vh;
-    padding:130px 10% 90px;
-    border-bottom:1px solid #141414;
-    position:relative;
-}
-h2{text-align:center;font-size:38px;margin-bottom:40px;letter-spacing:3px}
-
-/* HERO */
-.hero-img{
-    max-width:420px;
-    margin:0 auto 60px;
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid #222;
-    box-shadow:0 25px 60px rgba(0,0,0,.65);
-}
-.hero-img img{width:100%}
-
-/* VIDEOS */
-.videos{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
-}
-.video-box{
-    position:relative;
-    padding-top:56.25%;
-    border-radius:16px;
-    overflow:hidden;
-    border:1px solid #222;
-}
-.video-box video{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* BLOQUEO */
-.bloqueado{pointer-events:none}
-.overlay{
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.85);
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    letter-spacing:3px;
-    color:#00bfff;
+    background:radial-gradient(circle at top,#0b0b0b,#000);
+    color:#fff;
+    font-family:'Segoe UI',Arial,sans-serif;
 }
-.oculto{display:none}
 
-/* CONTADOR */
-.contador{
-    max-width:460px;
-    margin:auto;
-    text-align:center;
-    padding:55px;
-    border-radius:18px;
+.contenedor{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    padding:60px 70px;
+    max-width:1150px;
+    width:92%;
+    background:rgba(0,0,0,.7);
     border:1px solid #1f1f1f;
-}
-.contador span{
-    font-size:42px;
-    color:#00bfff;
+    border-radius:26px;
+    backdrop-filter:blur(14px);
 }
 
-/* CUENTAS */
-.cuentas-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-.cuenta-img{
-    border-radius:16px;
-    overflow:hidden;
-    border:1px solid #222;
-    cursor:pointer;
-}
-.cuenta-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-.cuenta-texto{
-    padding:12px 10px 0;
-    text-align:center;
-    font-size:14px;
-    color:#aaa;
-    min-height:22px;
+.bloque-texto{
+    flex:1;
 }
 
-/* LIGHTBOX */
-.lightbox{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.92);
+.bloque-texto h1{
+    font-size:32px;
+    font-weight:600;
+    letter-spacing:1.2px;
+    margin-bottom:30px;
+    line-height:1.3;
+}
+
+/* CONTADOR PROFESIONAL */
+.contador{
     display:flex;
-    align-items:center;
-    justify-content:center;
-    opacity:0;
-    pointer-events:none;
-    transition:.3s;
-    z-index:2000;
-}
-.lightbox.activo{
-    opacity:1;
-    pointer-events:all;
-}
-.lightbox img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:18px;
+    gap:18px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
 }
 
-/* AUDIO */
-#audio-player{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    width:300px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:10px;
-    padding:8px;
-    z-index:1001;
-}
-
-footer{
+.unidad{
+    background:#0f0f0f;
+    border:1px solid #242424;
+    border-radius:14px;
+    padding:16px 18px;
+    min-width:110px;
     text-align:center;
-    padding:30px;
-    color:#666;
+}
+
+.unidad .valor{
+    font-size:28px;
+    font-weight:600;
+    color:#00bfff;
+    letter-spacing:1px;
+}
+
+.unidad .etiqueta{
+    margin-top:6px;
+    font-size:12px;
+    color:#9a9a9a;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+}
+
+.subtexto{
+    font-size:14px;
+    color:#9b9b9b;
+    letter-spacing:.6px;
+}
+
+/* IMAGEN */
+.imagen{
+    width:290px;
+    border-radius:22px;
+    overflow:hidden;
+    border:1px solid #242424;
+    box-shadow:0 30px 70px rgba(0,0,0,.75);
+    position:relative;
+}
+
+.imagen::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.6));
+}
+
+.imagen img{
+    width:100%;
+    display:block;
+    filter:grayscale(100%) contrast(1.1) brightness(.9);
+}
+
+/* FOOTER */
+footer{
+    margin-top:30px;
+    font-size:12px;
+    color:#6f6f6f;
+    letter-spacing:.4px;
+    text-align:center;
+}
+
+@media(max-width:900px){
+    .contenedor{
+        flex-direction:column;
+        text-align:center;
+    }
+    .contador{
+        justify-content:center;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-    <a href="#testimonios">LA VERDAD</a>
-    <a href="#sec2">CUENTAS</a>
-    <a href="#video">VIDEO</a>
-    <a href="#coming">COMING SOON</a>
-    <a href="#sec6">????</a>
-</nav>
+<div class="contenedor">
 
-<section id="testimonios">
-<h2>LA VERDAD</h2>
-<div class="hero-img">
-    <img src="https://i.imgur.com/zr90BCM.jpg">
+    <div class="bloque-texto">
+        <h1>El fin de Zharick Tatiana Herrera en Internet</h1>
+
+        <div class="contador">
+            <div class="unidad">
+                <div class="valor" id="meses">0</div>
+                <div class="etiqueta">Meses</div>
+            </div>
+            <div class="unidad">
+                <div class="valor" id="dias">0</div>
+                <div class="etiqueta">Días</div>
+            </div>
+            <div class="unidad">
+                <div class="valor" id="horas">0</div>
+                <div class="etiqueta">Horas</div>
+            </div>
+            <div class="unidad">
+                <div class="valor" id="minutos">0</div>
+                <div class="etiqueta">Minutos</div>
+            </div>
+            <div class="unidad">
+                <div class="valor" id="segundos">0</div>
+                <div class="etiqueta">Segundos</div>
+            </div>
+        </div>
+
+        <div class="subtexto">
+            Disfruta mientras llega el día. El tiempo avanza y los ciclos se cierran. No pidas respeto si no lo diste.
+        </div>
+    </div>
+
+    <div class="imagen">
+        <img src="https://i.imgur.com/EF38iOF.jpg" alt="Referencia visual">
+    </div>
+
 </div>
 
-<div class="videos">
-    <div class="video-box"><video controls><source src="prueba1.mp4"></video></div>
-    <div class="video-box"><video controls><source src="prueba2.mp4"></video></div>
-</div>
-</section>
-
-<section id="sec2">
-<h2>CUENTAS</h2>
-
-<div class="cuentas-grid">
-    <div class="cuenta-img"><img src="https://i.imgur.com/PIAwVDC.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/Y1jqCR6.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/SXjnKX2.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/1QUqaKc.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/GIHE749.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/f129Wr1.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/Cj4ufrs.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-    <div class="cuenta-img"><img src="https://i.imgur.com/Ex7LWE7.jpg" onclick="abrirLightbox(this.src)"><div class="cuenta-texto">antigua cuenta de dc "myheartishe"</div></div>
-</div>
-</section>
-
-<!-- VIDEO DESBLOQUEADO -->
-<section id="video">
-<h2>VIDEO</h2>
-<div class="video-box" style="max-width:800px;margin:auto">
-    <video controls>
-        <source src="bolson.mp4" type="video/mp4">
-    </video>
-</div>
-</section>
-
-<!-- COMING SOON -->
-<section id="coming">
-<h2>COMING SOON</h2>
-<div class="hero-img">
-    <img src="https://i.imgur.com/quKoFE1.jpg" onclick="abrirLightbox(this.src)">
-</div>
-</section>
-
-<section id="sec6" class="bloqueado">
-<div class="overlay">Disponible pronto</div>
-<h2>SE DESBLOQUEA EL 27/12 – 10:00 PM</h2>
-<div class="contador"><span id="contador6"></span></div>
-</section>
-
-<footer>© 2025 · discord para hacer reclamos: haidemberg</footer>
-
-<div id="audio-player">
-<audio controls><source src="nene.mp3"></audio>
-</div>
-
-<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
-    <img id="lightbox-img">
-</div>
+<footer>
+    Discord para reclamaciones: malparidaperrahumana
+</footer>
 
 <script>
-function abrirLightbox(src){
-    document.getElementById("lightbox-img").src=src;
-    document.getElementById("lightbox").classList.add("activo");
-}
-function cerrarLightbox(){
-    document.getElementById("lightbox").classList.remove("activo");
-}
-document.addEventListener("keydown",e=>{
-    if(e.key==="Escape")cerrarLightbox();
-});
+const fechaFinal = new Date("2026-02-14T06:00:00-05:00");
 
-function contadorFecha(fecha,id,seccion){
-    const fin=new Date(fecha);
-    const intervalo=setInterval(()=>{
-        const diff=fin-new Date();
-        if(diff<=0){
-            document.getElementById(id).innerHTML="DESBLOQUEADO";
-            seccion.classList.remove("bloqueado");
-            seccion.querySelector(".overlay").classList.add("oculto");
-            clearInterval(intervalo);
-            return;
-        }
-        const d=Math.floor(diff/86400000);
-        const h=Math.floor(diff/3600000)%24;
-        const m=Math.floor(diff/60000)%60;
-        const s=Math.floor(diff/1000)%60;
-        document.getElementById(id).innerHTML=`${d}d ${h}h ${m}m ${s}s`;
-    },1000);
+function actualizarContador(){
+    const ahora = new Date();
+
+    if(ahora >= fechaFinal){
+        document.querySelector(".contador").innerHTML =
+            "<div class='unidad'><div class='valor'>FINALIZADO</div></div>";
+        return;
+    }
+
+    let meses = (fechaFinal.getFullYear() - ahora.getFullYear()) * 12 +
+                (fechaFinal.getMonth() - ahora.getMonth());
+
+    let fechaTemp = new Date(ahora);
+    fechaTemp.setMonth(fechaTemp.getMonth() + meses);
+
+    if(fechaTemp > fechaFinal){
+        meses--;
+        fechaTemp.setMonth(fechaTemp.getMonth() - 1);
+    }
+
+    const diferencia = fechaFinal - fechaTemp;
+
+    const dias = Math.floor(diferencia / 86400000);
+    const horas = Math.floor(diferencia / 3600000) % 24;
+    const minutos = Math.floor(diferencia / 60000) % 60;
+    const segundos = Math.floor(diferencia / 1000) % 60;
+
+    document.getElementById("meses").textContent = meses;
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent = horas;
+    document.getElementById("minutos").textContent = minutos;
+    document.getElementById("segundos").textContent = segundos;
 }
 
-contadorFecha("2025-12-27T22:00:00-05:00","contador6",sec6);
+actualizarContador();
+setInterval(actualizarContador, 1000);
 </script>
 
 </body>

@@ -2,218 +2,286 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Cuenta Regresiva</title>
+<title>Se adelantó Navidad</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
+*{box-sizing:border-box;scroll-behavior:smooth}
 body{
-    min-height:100vh;
+    margin:0;
+    font-family:'Inter','Segoe UI',Arial,sans-serif;
+    background:radial-gradient(circle at top,#050505,#000);
+    color:#eaeaea;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,.6);
+    backdrop-filter:blur(10px);
     display:flex;
-    flex-direction:column;
-    align-items:center;
     justify-content:center;
-    background:radial-gradient(circle at top,#0b0b0b,#000);
-    color:#fff;
-    font-family:'Segoe UI',Arial,sans-serif;
+    gap:28px;
+    padding:14px;
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,.04);
 }
-
-.contenedor{
-    display:flex;
-    align-items:center;
-    gap:60px;
-    padding:60px 70px;
-    max-width:1150px;
-    width:92%;
-    background:rgba(0,0,0,.7);
-    border:1px solid #1f1f1f;
-    border-radius:26px;
-    backdrop-filter:blur(14px);
-}
-
-.bloque-texto{
-    flex:1;
-}
-
-.bloque-texto h1{
-    font-size:32px;
+nav a{
+    color:#eaeaea;
+    text-decoration:none;
     font-weight:600;
-    letter-spacing:1.2px;
-    margin-bottom:30px;
-    line-height:1.3;
-}
-
-/* CONTADOR PROFESIONAL */
-.contador{
-    display:flex;
-    gap:18px;
-    margin-bottom:16px;
-    flex-wrap:wrap;
-}
-
-.unidad{
-    background:#0f0f0f;
-    border:1px solid #242424;
-    border-radius:14px;
-    padding:16px 18px;
-    min-width:110px;
-    text-align:center;
-}
-
-.unidad .valor{
-    font-size:28px;
-    font-weight:600;
-    color:#00bfff;
     letter-spacing:1px;
+    font-size:13px;
+}
+nav a:hover{color:#00bfff}
+
+/* SECCIONES */
+section{
+    min-height:100vh;
+    padding:150px 10% 110px;
+    border-bottom:1px solid rgba(255,255,255,.03);
+}
+h2{
+    text-align:center;
+    font-size:40px;
+    letter-spacing:4px;
+    margin-bottom:40px;
 }
 
-.unidad .etiqueta{
-    margin-top:6px;
-    font-size:12px;
-    color:#9a9a9a;
-    letter-spacing:.6px;
-    text-transform:uppercase;
-}
-
-.subtexto{
-    font-size:14px;
-    color:#9b9b9b;
-    letter-spacing:.6px;
-}
-
-/* IMAGEN */
-.imagen{
-    width:290px;
-    border-radius:22px;
+/* HERO */
+.hero-img{
+    max-width:720px;
+    margin:0 auto 50px;
+    border-radius:18px;
     overflow:hidden;
-    border:1px solid #242424;
-    box-shadow:0 30px 70px rgba(0,0,0,.75);
-    position:relative;
+    border:1px solid rgba(255,255,255,.04);
+    box-shadow:0 30px 80px rgba(0,0,0,.65);
 }
+.hero-img img{width:100%;display:block}
 
-.imagen::after{
-    content:"";
+/* VIDEOS */
+.videos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
+}
+.video-box{
+    position:relative;
+    padding-top:56.25%;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.04);
+}
+.video-box video{
     position:absolute;
     inset:0;
-    background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(0,0,0,.6));
-}
-
-.imagen img{
     width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* CUENTAS */
+.cuentas-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+}
+.cuenta-img{
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.04);
+    cursor:pointer;
+    transition:.3s;
+}
+.cuenta-img:hover{
+    transform:translateY(-6px);
+    box-shadow:0 26px 60px rgba(0,0,0,.65);
+}
+.cuenta-img img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
     display:block;
-    filter:grayscale(100%) contrast(1.1) brightness(.9);
 }
 
-/* FOOTER */
+/* FINAL */
+.final-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:28px;
+}
+.final-img{
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.04);
+    cursor:pointer;
+    transition:.3s;
+}
+.final-img:hover{
+    transform:translateY(-6px);
+    box-shadow:0 26px 60px rgba(0,0,0,.65);
+}
+.final-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* LIGHTBOX */
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:2000;
+}
+.lightbox.activo{
+    opacity:1;
+    pointer-events:all;
+}
+.lightbox img{
+    max-width:95%;
+    max-height:95%;
+    border-radius:16px;
+}
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:#111;
+    color:#fff;
+    border:none;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* AUDIO */
+#audio-player{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:300px;
+    background:#111;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:10px;
+    padding:8px;
+    z-index:1001;
+}
+
 footer{
-    margin-top:30px;
-    font-size:12px;
-    color:#6f6f6f;
-    letter-spacing:.4px;
     text-align:center;
-}
-
-@media(max-width:900px){
-    .contenedor{
-        flex-direction:column;
-        text-align:center;
-    }
-    .contador{
-        justify-content:center;
-    }
+    padding:40px;
+    color:#777;
+    font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="contenedor">
+<nav>
+    <a href="#testimonios">LA VERDAD</a>
+    <a href="#sec2">CUENTAS</a>
+    <a href="#final">EL FINAL</a>
+    <a href="#coming">COMING SOON</a>
+</nav>
 
-    <div class="bloque-texto">
-        <h1>El fin de Tatiana Herrera en Internet</h1>
+<section id="testimonios">
+<h2>LA VERDAD</h2>
 
-        <div class="contador">
-            <div class="unidad">
-                <div class="valor" id="meses">0</div>
-                <div class="etiqueta">Meses</div>
-            </div>
-            <div class="unidad">
-                <div class="valor" id="dias">0</div>
-                <div class="etiqueta">Días</div>
-            </div>
-            <div class="unidad">
-                <div class="valor" id="horas">0</div>
-                <div class="etiqueta">Horas</div>
-            </div>
-            <div class="unidad">
-                <div class="valor" id="minutos">0</div>
-                <div class="etiqueta">Minutos</div>
-            </div>
-            <div class="unidad">
-                <div class="valor" id="segundos">0</div>
-                <div class="etiqueta">Segundos</div>
-            </div>
-        </div>
-
-        <div class="subtexto">
-            Disfruta mientras llega el día. El tiempo avanza y los ciclos se cierran. No pidas respeto si no lo diste.
-        </div>
-    </div>
-
-    <div class="imagen">
-        <img src="https://i.imgur.com/EF38iOF.jpg" alt="Referencia visual">
-    </div>
-
+<div class="hero-img" style="max-width:420px">
+    <img src="https://i.imgur.com/zr90BCM.jpg">
 </div>
 
-<footer>
-    Discord para reclamaciones: malparidaperrahumana
-</footer>
+<div class="videos">
+    <div class="video-box"><video controls><source src="prueba1.mp4"></video></div>
+    <div class="video-box"><video controls><source src="prueba2.mp4"></video></div>
+</div>
+</section>
+
+<section id="sec2">
+<h2>CUENTAS</h2>
+<div class="cuentas-grid">
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/PIAwVDC.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/Y1jqCR6.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/SXjnKX2.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/1QUqaKc.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/GIHE749.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/f129Wr1.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/Cj4ufrs.jpg"></div>
+    <div class="cuenta-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/Ex7LWE7.jpg"></div>
+</div>
+</section>
+
+<section id="final">
+<h2>EL FINAL</h2>
+<div class="final-grid">
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/hRYytwQ.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/4XatzB3.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/kSp5JeW.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/ynFS1he.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/aJW1K0z.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/I7krlpE.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/Zgl4tOl.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/BmEQ6pp.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/BamEu60.jpg"></div>
+    <div class="final-img" onclick="abrirLightbox(this.querySelector('img'))"><img src="https://i.imgur.com/AJAKzAj.jpg"></div>
+</div>
+</section>
+
+<section id="coming">
+<h2>COMING SOON</h2>
+<div class="hero-img">
+    <img src="https://i.imgur.com/6qYNnTH.jpg" onclick="abrirLightbox(this)">
+</div>
+</section>
+
+<footer>© 2025 · discord para hacer reclamos: haidemberg</footer>
+
+<div id="audio-player">
+<audio controls><source src="nene.mp3"></audio>
+</div>
+
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+    <button class="close-btn">✕</button>
+    <img id="lightbox-img">
+</div>
 
 <script>
-const fechaFinal = new Date("2026-02-14T06:00:00-05:00");
+let scrollPos = 0;
 
-function actualizarContador(){
-    const ahora = new Date();
+function abrirLightbox(img){
+    scrollPos = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollPos}px`;
+    document.body.style.width = '100%';
 
-    if(ahora >= fechaFinal){
-        document.querySelector(".contador").innerHTML =
-            "<div class='unidad'><div class='valor'>FINALIZADO</div></div>";
-        return;
-    }
-
-    let meses = (fechaFinal.getFullYear() - ahora.getFullYear()) * 12 +
-                (fechaFinal.getMonth() - ahora.getMonth());
-
-    let fechaTemp = new Date(ahora);
-    fechaTemp.setMonth(fechaTemp.getMonth() + meses);
-
-    if(fechaTemp > fechaFinal){
-        meses--;
-        fechaTemp.setMonth(fechaTemp.getMonth() - 1);
-    }
-
-    const diferencia = fechaFinal - fechaTemp;
-
-    const dias = Math.floor(diferencia / 86400000);
-    const horas = Math.floor(diferencia / 3600000) % 24;
-    const minutos = Math.floor(diferencia / 60000) % 60;
-    const segundos = Math.floor(diferencia / 1000) % 60;
-
-    document.getElementById("meses").textContent = meses;
-    document.getElementById("dias").textContent = dias;
-    document.getElementById("horas").textContent = horas;
-    document.getElementById("minutos").textContent = minutos;
-    document.getElementById("segundos").textContent = segundos;
+    document.getElementById("lightbox-img").src = img.src;
+    document.getElementById("lightbox").classList.add("activo");
 }
 
-actualizarContador();
-setInterval(actualizarContador, 1000);
+function cerrarLightbox(){
+    document.getElementById("lightbox").classList.remove("activo");
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollPos);
+}
+
+document.addEventListener("keydown",e=>{
+    if(e.key==="Escape") cerrarLightbox();
+});
 </script>
 
 </body>
